@@ -1,5 +1,6 @@
 package ro.pub.cs.systems.eim.lab04.contactsmanager;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.provider.ContactsContract;
@@ -10,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
 import android.provider.ContactsContract.RawContacts;
+import android.widget.Toast;
+
 import java.lang.Object;
 import java.util.ArrayList;
 
@@ -40,6 +43,16 @@ public class ContactsManagerActivity extends AppCompatActivity {
         websiteEditText = (EditText) findViewById(R.id.editText_website);
         imEditText = (EditText) findViewById(R.id.editText_im);
 
+        Intent intent = getIntent();
+        if (intent != null) {
+            String phone = intent.getStringExtra("ro.pub.cs.systems.eim.lab04.contactsmanager.PHONE_NUMBER_KEY");
+            if (phone != null) {
+                phoneEditText.setText(phone);
+            } else {
+                Toast.makeText(this, getResources().getString(R.string.phone_error), Toast.LENGTH_LONG).show();
+            }
+        }
+
         final Button showBtn = (Button) findViewById(R.id.button_show_hide);
         Button saveBtn = (Button) findViewById(R.id.button_save);
         Button cancelBtn = (Button) findViewById(R.id.button_cancel);
@@ -61,6 +74,7 @@ public class ContactsManagerActivity extends AppCompatActivity {
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                setResult(Activity.RESULT_CANCELED, new Intent());
                 finish();
             }
         });
@@ -111,9 +125,20 @@ public class ContactsManagerActivity extends AppCompatActivity {
                     contactData.add(imRow);
                 }
                 intent.putParcelableArrayListExtra(ContactsContract.Intents.Insert.DATA, contactData);
-                startActivity(intent);
+                startActivityForResult(intent, Constants.CONTACTS_MANAGER_REQUEST_CODE);
 
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch(requestCode) {
+            case Constants.CONTACTS_MANAGER_REQUEST_CODE:
+                setResult(resultCode, new Intent());
+                finish();
+                break;
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

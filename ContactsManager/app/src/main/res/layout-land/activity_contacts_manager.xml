@@ -10,21 +10,24 @@
     android:layout_height="match_parent">
 
     <ScrollView
+        android:id="@+id/scrollView1"
+        style="@android:style/Widget.DeviceDefault.ScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/scrollView1">
+        android:scrollbarStyle="insideOverlay"
+        android:visibility="visible">
 
         <LinearLayout
+            android:id="@+id/container_vizibil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/container_vizibil">
+            android:orientation="vertical">
 
             <Button
-                android:text="SHOW ADDITIONAL FIELDS"
+                android:id="@+id/button_show_hide"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/button_show_hide" />
+                android:text="SHOW ADDITIONAL FIELDS" />
 
             <EditText
                 android:id="@+id/editText_name"
@@ -35,28 +38,28 @@
                 android:inputType="textPersonName" />
 
             <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="phone"
-                android:ems="10"
                 android:id="@+id/editText_number"
-                android:hint="Number" />
-
-            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
                 android:ems="10"
+                android:hint="Number"
+                android:inputType="phone" />
+
+            <EditText
                 android:id="@+id/editText_email"
-                android:hint="Email" />
-
-            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPostalAddress"
                 android:ems="10"
+                android:hint="Email"
+                android:inputType="textEmailAddress" />
+
+            <EditText
                 android:id="@+id/editText_address"
-                android:hint="Address" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Address"
+                android:inputType="textPostalAddress" />
         </LinearLayout>
     </ScrollView>
 
@@ -72,54 +75,56 @@
         android:id="@+id/button_cancel" />
 
     <ScrollView
+        android:id="@+id/scrollView2"
+        style="@android:style/Widget.DeviceDefault.ScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/scrollView2"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:scrollbarStyle="insideOverlay"
         android:visibility="invisible">
 
         <LinearLayout
-            android:orientation="vertical"
+            android:id="@+id/container_ascuns"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/container_ascuns"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+            android:layout_alignParentStart="true"
+            android:orientation="vertical">
 
             <EditText
+                android:id="@+id/editText_jobTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
+                android:ems="10"
                 android:hint="Job Title"
-                android:ems="10"
-                android:id="@+id/editText_jobTitle" />
+                android:inputType="textPersonName" />
 
             <EditText
+                android:id="@+id/editText_company"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
+                android:ems="10"
                 android:hint="Company"
-                android:ems="10"
-                android:id="@+id/editText_company" />
+                android:inputType="textPersonName" />
 
             <EditText
+                android:id="@+id/editText_website"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
+                android:ems="10"
                 android:hint="Website"
-                android:ems="10"
-                android:id="@+id/editText_website" />
+                android:inputType="textPersonName" />
 
             <EditText
+                android:id="@+id/editText_im"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:hint="IM"
                 android:ems="10"
-                android:id="@+id/editText_im" />
+                android:hint="IM"
+                android:inputType="textPersonName" />
         </LinearLayout>
     </ScrollView>
 
